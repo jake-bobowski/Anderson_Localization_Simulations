@@ -28,7 +28,7 @@ Clone the repository and install dependencies:
 git clone https://github.com/yourusername/point_particle_clustering.git
 cd point_particle_clustering
 pip install -r requirements.txt
-
+```
 
 ## Usage
 
