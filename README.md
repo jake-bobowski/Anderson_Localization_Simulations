@@ -6,7 +6,7 @@ The goal is to provide visual and quantitative tools for understanding localizat
 
 ## Simulations
 
-### 🔹 [`Point_Particle_Diffusion/`](Point Particle_Diffusion)
+### 🔹 [`Point_Particle_Diffusion/`](Point_Particle_Diffusion)
 
 A classical particle diffusion simulation with spatially disordered drift and diffusion fields. Tracks clustering, nearest neighbor statistics, and divergence-density correlations.
 
