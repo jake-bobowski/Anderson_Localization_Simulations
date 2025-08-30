@@ -6,7 +6,7 @@ The goal is to provide visual and quantitative tools for understanding localizat
 
 ## Simulations
 
-### 🔹 [`Point Particle Diffusion/`](Point Particle Diffusion)
+### 🔹 [`Point_Particle_Diffusion/`](Point Particle_Diffusion)
 
 A classical particle diffusion simulation with spatially disordered drift and diffusion fields. Tracks clustering, nearest neighbor statistics, and divergence-density correlations.
 
@@ -15,11 +15,11 @@ Includes:
 - ⟨r²⟩ vs time
 - Anderson localization metrics
 
-➡️ See [`Point Particle Diffusion/README.md`](Point Particle Diffusion/README.md) for usage and outputs.
+➡️ See [`Point_Particle_Diffusion/README.md`](Point_Particle_Diffusion/README.md) for usage and outputs.
 
 ---
 
-### 🔹 [`Disordered Transmission Line/`](Disordered Transmission Line)
+### 🔹 [`Disordered_Transmission_Line/`](Disordered_Transmission_Line)
 
 A wave-based model simulating electromagnetic pulse propagation through a 1D disordered transmission line. Uses transfer matrices and ensemble averaging to reveal localization in both time and frequency domains.
 
@@ -28,7 +28,7 @@ Includes:
 - Spectral energy maps |Vₖ(f)|²
 - Frame-by-frame animations
 
-➡️ See [`Disordered Transmission Line/README.md`](Disordered Transmission Line/README.md) for usage and outputs.
+➡️ See [`Disordered_Transmission_Line/README.md`](Disordered_Transmission_Line/README.md) for usage and outputs.
 
 ---
 
