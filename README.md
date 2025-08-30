@@ -1,12 +1,12 @@
 # Anderson Localization Simulations
 
-This repository contains two complementary simulations that explore Anderson localization — the suppression of wave diffusion in disordered systems due to interference.
+This repository contains two complementary simulations that explore Anderson localization, or the suppression of wave diffusion in disordered systems due to interference.
 
 The goal is to provide visual and quantitative tools for understanding localization in both classical and wave-based transport systems. These simulations are suitable for research, teaching, or generating high-quality figures and animations for publication.
 
 ## Simulations
 
-### 🔹 [`Point_Particle_Random_Walk/`](Point_Particle_Random_Walk)
+### 🔹 [`Point Particle Diffusion/`](Point Particle Diffusion)
 
 A classical particle diffusion simulation with spatially disordered drift and diffusion fields. Tracks clustering, nearest neighbor statistics, and divergence-density correlations.
 
@@ -15,11 +15,11 @@ Includes:
 - ⟨r²⟩ vs time
 - Anderson localization metrics
 
-➡️ See [`Point_Particle_Random_Walk/README.md`](Point_Particle_Random_Walk/README.md) for usage and outputs.
+➡️ See [`Point Particle Diffusion/README.md`](Point Particle Diffusion/README.md) for usage and outputs.
 
 ---
 
-### 🔹 [`Transmission_Line_Simulation/`](Transmission_Line_Simulation)
+### 🔹 [`Disordered Transmission Line/`](Disordered Transmission Line)
 
 A wave-based model simulating electromagnetic pulse propagation through a 1D disordered transmission line. Uses transfer matrices and ensemble averaging to reveal localization in both time and frequency domains.
 
@@ -28,7 +28,7 @@ Includes:
 - Spectral energy maps |Vₖ(f)|²
 - Frame-by-frame animations
 
-➡️ See [`Transmission_Line_Simulation/README.md`](Transmission_Line_Simulation/README.md) for usage and outputs.
+➡️ See [`Disordered Transmission Line/README.md`](Disordered Transmission Line/README.md) for usage and outputs.
 
 ---
 
