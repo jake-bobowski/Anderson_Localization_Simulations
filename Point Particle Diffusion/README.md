@@ -71,4 +71,3 @@ If you use this simulation or results derived from it, please cite:
 ---
 
 © 2025 Jake Bobowski. Released under the MIT License.
-````
