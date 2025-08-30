@@ -28,7 +28,7 @@ pip install -r requirements.txt
 Run the simulation using:
 
 ```bash
-python simulate_clustering.py --mu_std 0.01 --num_steps 1000
+python RandomWalk_AL_GitHub.py --mu_std 0.01 --num_steps 1000
 ```
 
 This will simulate 10,000 particles for 1000 time steps with a drift field disorder strength of 0.01.
