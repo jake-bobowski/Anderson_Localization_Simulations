@@ -2,7 +2,7 @@
 # University of British Columbia
 # Physics Department
 # August 29, 2025
-# Point Particle Diffusion/Anderson Localization Simulation
+# TL Anderson Localization Simulation
 
 def generate_energy_frames(v_map_accum, t_ds, V_k, f, f0, sigma_f, f0_factor, mfp, ell, disorder_scale, frame_dir, time_range=(0, 100e-9), n_frames=501):
     """
