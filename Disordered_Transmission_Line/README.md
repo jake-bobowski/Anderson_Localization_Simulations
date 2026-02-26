@@ -71,7 +71,7 @@ Disordered TL (publication resolution)
 python TL_AL_GitHub.py --n_freq 1048576 --N_segments 500 --N_iter 500 --disorder_scale 0.5 --fmax_factor 10
 ```
 
-Simulations that will match the resolution of the simulated data shown in published figures.
+Simulations that will match the resolution of the simulated data shown in published figures.  High memory usage and long runtimes.
 
 
 
