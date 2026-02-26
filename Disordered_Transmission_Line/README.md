@@ -73,6 +73,7 @@ Simulation results are saved in the directory specified by `--output_dir` (defau
 - `frames/`: 
   - `frame_###_tXXXns.png`: Animation frames showing ⟨|v_k(t)|²⟩ and |V_k(f)|²
   - `*_time.txt` and `*_freq.txt`: Raw data for each frame
+  - If ```n_frames = 0```, the `frames/` created directory will be empty 
 
 ## Citation
 
@@ -82,11 +83,11 @@ If you use this simulation or results derived from it, please cite:
 @misc{TL_AL_2025,
   author = {Jake S. Bobowski},
   title = {1D transmission line simulation of Anderson localization},
-  year = {2025},
+  year = {2026},
   howpublished = {\url{https://github.com/jake-bobowski/Anderson_Localization_Simulations}},
 }
 ```
 
 ---
 
-© 2025 Jake Bobowski. Released under the MIT License.
+© 2026 Jake Bobowski. Released under the MIT License.
