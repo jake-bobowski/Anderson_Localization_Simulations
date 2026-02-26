@@ -366,7 +366,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="1D Transmission-Line Anderson Localization Simulation")
     parser.add_argument("--N_segments", type=int, default=500, help="Number of segments")
     parser.add_argument("--n_freq", type=int, default=2**20, help="Number of frequencies")
-    parser.add_argument("--N_iter", type=int, default=5000, help="Number of iterations")
+    parser.add_argument("--N_iter", type=int, default=500, help="Number of iterations")
     parser.add_argument("--mfp", type=float, default=0.15, help="Mean free path")
     parser.add_argument("--fmax_factor", type=float, default=10, help="Factor for fmax adjustment")
     parser.add_argument("--disorder_scale", type=float, default=0.5, help="TL disorder scale")
@@ -403,9 +403,10 @@ if __name__ == "__main__":
     log_eps = 1e-20                # Floor for log scale to avoid log(0)
     
     os.makedirs(output_dir, exist_ok=True)
-
-    frame_dir = os.path.join(output_dir, "frames")
-    os.makedirs(frame_dir, exist_ok=True)
+    
+    if n_frames != 0:
+        frame_dir = os.path.join(output_dir, "frames")
+        os.makedirs(frame_dir, exist_ok=True)
 
     temporal_dir = os.path.join(output_dir, "temporal")
     os.makedirs(temporal_dir, exist_ok=True)
