@@ -31,11 +31,19 @@ pip install -r requirements.txt
 
 Run the simulation using:
 
+### CLASSROOM PEDAGOGY (~2.6 GB peak RAM)
+
+Homogeneous TL (~10 s)
 ```bash
-python TL_AL_GitHub.py --N_segments 500 --N_iter 5000 --disorder_scale 0.5
+python TL_AL_GitHub.py --n_freq 32768 --N_segments 250 --N_iter 1 --disorder_scale 0 --fmax_factor 2
 ```
 
-This will simulate 500-segment disordered transmission lines with disorder strength 0.5, averaged over 5000 realizations.
+Disordered TL (~10 s)
+```bash
+python TL_AL_GitHub.py --n_freq 32768 --N_segments 250 --N_iter 50 --disorder_scale 0.4 --fmax_factor 2
+```
+
+These will simulate 250-segment homoegeneous/disordered transmission lines.
 
 ### Optional Command-Line Arguments
 
