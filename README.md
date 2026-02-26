@@ -4,7 +4,7 @@ This repository contains two complementary simulations that explore Anderson loc
 
 The goal is to provide visual and quantitative tools for understanding localization in both classical and wave-based transport. These simulations are suitable for research, teaching, and generating publication-quality figures and animations.
 
-Together, the simulations illustrate localization from complementary perspectives: particle diffusion highlights suppressed transport statistically, while the transmission-line model demonstrates wave interference and energy confinement.
+Together, the simulations illustrate localization from complementary perspectives: particle diffusion highlights suppressed transport statistically, while the transmission-line model demonstrates wave interference and energy confinement.  A paper based on this pair of simulations is available on the arXiv: [arXiv:2601.01381](https://arxiv.org/abs/2601.01381).
 
 ## Simulations
 
