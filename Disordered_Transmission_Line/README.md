@@ -45,12 +45,14 @@ This will simulate 500-segment disordered transmission lines with disorder stren
 | `--n_freq`         | 1048576  | Number of frequency points (must be a power of 2)             |
 | `--N_iter`         | 5000     | Number of ensemble iterations                                 |
 | `--mfp`            | 0.15     | Mean free path (m), sets disorder correlation length          |
+| `--fmax_factor`    | 10     | Factor for fmax adjustment          |
 | `--disorder_scale` | 0.5      | Standard deviation of C, L disorder (relative to mean)        |
 | `--disorder_onset` | 0.2      | Fraction of TL length over which disorder gradually turns on  |
 | `--f0_factor`      | 2.0      | f₀ = f0_factor × v₀ / mfp; center freq. of input Gaussian pulse |
 | `--sigma_divisor`  | 20.0     | Standard deviation of input pulse = f₀ / sigma_divisor        |
 | `--output_dir`     | heatmaps_avg | Folder for all output files                                |
 | `--save_interval`  | 100      | Save plots every N iterations during simulation               |
+| `--n_frames`       | 0      | Number of frames to generate for animation (0 to skip)               |
 
 ## Output
 
@@ -73,7 +75,7 @@ Simulation results are saved in the directory specified by `--output_dir` (defau
 - `frames/`: 
   - `frame_###_tXXXns.png`: Animation frames showing ⟨|v_k(t)|²⟩ and |V_k(f)|²
   - `*_time.txt` and `*_freq.txt`: Raw data for each frame
-  - If ```n_frames = 0```, the `frames/` created directory will be empty 
+  - If ```n_frames = 0```, the `frames/` directory will be empty 
 
 ## Citation
 
