@@ -81,7 +81,7 @@ These settings reproduce the resolution of the simulated data shown in published
 |--------------------|----------|---------------------------------------------------------------|
 | `--N_segments`     | 500      | Number of TL segments                                         |
 | `--n_freq`         | 1048576  | Number of frequency points (must be a power of 2)             |
-| `--N_iter`         | 5000     | Number of ensemble iterations                                 |
+| `--N_iter`         | 500     | Number of ensemble iterations                                 |
 | `--mfp`            | 0.15     | Mean free path (m), sets disorder correlation length          |
 | `--fmax_factor`    | 10     | Multiplier setting maximum simulated frequency range          |
 | `--disorder_scale` | 0.5      | Standard deviation of C, L disorder (relative to mean)        |
@@ -113,7 +113,7 @@ Simulation results are saved in the directory specified by `--output_dir` (defau
 - `frames/`: 
   - `frame_###_tXXXns.png`: Animation frames showing ⟨|v_k(t)|²⟩ and |V_k(f)|²
   - `*_time.txt` and `*_freq.txt`: Raw data for each frame
-  - If `n_frames = 0`, the `frames/` directory will be empty 
+  - If `n_frames = 0`, the `frames/` directory will no be created
 
 ## Citation
 
