@@ -1,6 +1,6 @@
 # Particle Clustering Simulation with Spatially Disordered Drift Fields
 
-This Python simulation models particle motion in a 2D periodic domain with spatially varying drift (bias) and diffusion. The drift field is disordered with a tunable standard deviation `mu_std`, allowing users to explore clustering phenomena and analogs to Anderson localization.
+This Python simulation models particle motion in a 2D periodic domain with spatially varying drift (bias) and diffusion. The disordered drift field introduces spatially correlated bias that suppresses large-scale transport and produces clustering behavior analogous to Anderson localization in wave systems.
 
 The simulation tracks metrics over time:
 - Mean squared displacement ⟨r²⟩
