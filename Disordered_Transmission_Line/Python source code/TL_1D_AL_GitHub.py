@@ -1,10 +1,91 @@
 # Jake S. Bobowski
 # University of British Columbia
 # Physics Department
-# August 29, 2025
-# TL Anderson Localization Simulation
+# February 26, 2026
+# 1D Transmission-Line Anderson Localization Simulation
 
-def generate_energy_frames(v_map_accum, t_ds, V_k, f, f0, sigma_f, f0_factor, mfp, ell, disorder_scale, frame_dir, time_range=(0, 100e-9), n_frames=501):
+"""
+TL_1D_AL_GitHub.py
+1D Transmission-Line Anderson Localization Simulation
+
+This Python script supports both pedagogical (fast) and research-scale runs.
+Only the parameter set needs to change.
+
+------------------------------------------------------------
+Example parameter sets:
+
+============================================================
+CLASSROOM SCALE: 
+Peak RAM usage ~2.6 GB for N=250, n_freq=32768
+============================================================
+
+1) Homogeneous TL (ballistic reference, fast ~10 s):
+python TL_1D_AL_GitHub.py \
+  --n_freq 32768 \
+  --N_segments 250 \
+  --N_iter 1 \
+  --disorder_scale 0 \
+  --fmax_factor 2 
+
+2) Disordered TL (localization, ~5-10 min):
+python TL_1D_AL_GitHub.py \
+  --n_freq 32768 \
+  --N_segments 250 \
+  --N_iter 50 \
+  --disorder_scale 0.5 \
+  --fmax_factor 2 
+
+  
+============================================================
+RESEARCH SCALE:
+============================================================
+
+3) Homogeneous TL (high-resolution ballistic):
+python TL_1D_AL_GitHub.py \
+  --n_freq 262144 \
+  --N_segments 500 \
+  --N_iter 1 \
+  --disorder_scale 0 \
+  --fmax_factor 10 
+
+4) Disordered TL (high-resolution localization):
+python TL_1D_AL_GitHub.py \
+  --n_freq 262144 \
+  --N_segments 500 \
+  --N_iter 500 \
+  --disorder_scale 0.5 \
+  --fmax_factor 10
+
+============================================================
+PARAMETER SET USED FOR FIGURES IN PUBLICATION 
+(arXiv:2601.01381)
+============================================================
+
+5) Homogeneous TL (published ballistic):
+python TL_1D_AL_GitHub.py \
+  --n_freq 1048576 \
+  --N_segments 500 \
+  --N_iter 1 \
+  --disorder_scale 0 \
+  --fmax_factor 10 
+
+6) Disordered TL (published localization):
+python TL_1D_AL_GitHub.py \
+  --n_freq 1048576 \
+  --N_segments 500 \
+  --N_iter 500 \
+  --disorder_scale 0.5 \
+  --fmax_factor 10
+
+------------------------------------------------------------
+Notes:
+- Runtime scales approximately linearly with N_iter.
+- Memory scales primarily with n_freq x N_segments.
+- BLAS threading is limited to 1 thread for performance stability.
+- The option --n_frames defaults to 0 (no animation frames generated).
+"""
+
+def generate_energy_frames(v_map_accum, t_ds, V_k, f, f0, sigma_f, f0_factor, mfp, ell, disorder_scale, frame_dir, time_range=(0, 100e-9), n_frames=0):
     """
     Generate frames showing:
     - ⟨|v_k(t)|²⟩ vs k (top panel)
@@ -95,7 +176,7 @@ def generate_energy_frames(v_map_accum, t_ds, V_k, f, f0, sigma_f, f0_factor, mf
         ax1.plot(k_vals, v_k_t, 'b-')
         ax1.set_xlim(0, N - 1)
         if disorder_scale == 0:
-            ax2.set_yscale('linear')
+            ax1.set_yscale('linear')
             ax1.set_ylim(0, 1)
         else:
             ax1.set_yscale('log')
@@ -138,6 +219,7 @@ def transfer_matrix(Z0_k, v0_k, ell_k, omega):
     """
     Return the 2×2 transfer matrix T_k(ω) for a TL segment.
     omega can be a scalar or numpy array.
+    Returns array of shape (2,2,len(omega)) when omega is vector.
     """
     
     beta_k = omega / v0_k
@@ -147,7 +229,7 @@ def transfer_matrix(Z0_k, v0_k, ell_k, omega):
     T_k = np.array( [ [ cos_bl, 1j * Z0_k * sin_bl ], [ ( 1j/Z0_k ) * sin_bl, cos_bl ] ] )
     return T_k
 
-def TL_AL(N = 500, n_freq = 2**20, mfp = 0.15, disorder_scale = 0.5, disorder_onset = 0.2,  f0_factor = 2.0, sigma_divisor = 20):
+def TL_AL(N = 500, n_freq = 2**20, mfp = 0.15, fmax_factor = 10, disorder_scale = 0.5, disorder_onset = 0.2,  f0_factor = 2.0, sigma_divisor = 20):
 
     # --- Constants ---
     Zs = 50         # ohms
@@ -161,7 +243,7 @@ def TL_AL(N = 500, n_freq = 2**20, mfp = 0.15, disorder_scale = 0.5, disorder_on
     sigma_f = f0 / sigma_divisor
     t0 = 1 / sigma_f
     
-    f_max = 10 * f0
+    f_max = fmax_factor * f0
     df = 2 * f_max / n_freq
     f = np.linspace(-f_max, f_max - df, n_freq)
     t = np.fft.fftshift(np.fft.fftfreq(n_freq, d=df))
@@ -180,6 +262,7 @@ def TL_AL(N = 500, n_freq = 2**20, mfp = 0.15, disorder_scale = 0.5, disorder_on
     L, C = [], []
     disorder_onset = disorder_onset * N
     for k in range(N):
+        # Smoothly ramp disorder to suppress impedance mismatch at source
         adiabatic = (1 - np.exp(-k / disorder_onset))**2
         L.append(np.random.normal(muL, sigmaL * adiabatic))
         C.append(np.random.normal(muC, sigmaC * adiabatic))
@@ -265,26 +348,34 @@ def TL_AL(N = 500, n_freq = 2**20, mfp = 0.15, disorder_scale = 0.5, disorder_on
 
     return V_k, V_k_f0, f, f0, sigma_f, v_k, t, ell
 
+# Limit BLAS threading to avoid severe slowdowns on hybrid CPUs
+# (small batched linear algebra workload performs best single-threaded)
+import os
+os.environ.setdefault("OPENBLAS_NUM_THREADS", "1")
+os.environ.setdefault("OMP_NUM_THREADS", "1")
+os.environ.setdefault("MKL_NUM_THREADS", "1")
+os.environ.setdefault("NUMEXPR_NUM_THREADS", "1")  # optional
 
 import numpy as np
 import matplotlib.pyplot as plt
 import argparse
-import os
 import datetime
 from tqdm import tqdm
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Run clustering simulation")
+    parser = argparse.ArgumentParser(description="1D Transmission-Line Anderson Localization Simulation")
     parser.add_argument("--N_segments", type=int, default=500, help="Number of segments")
     parser.add_argument("--n_freq", type=int, default=2**20, help="Number of frequencies")
     parser.add_argument("--N_iter", type=int, default=5000, help="Number of iterations")
     parser.add_argument("--mfp", type=float, default=0.15, help="Mean free path")
+    parser.add_argument("--fmax_factor", type=float, default=10, help="Factor for fmax adjustment")
     parser.add_argument("--disorder_scale", type=float, default=0.5, help="TL disorder scale")
     parser.add_argument("--disorder_onset", type=float, default=0.2, help="TL disorder onset")
     parser.add_argument("--output_dir", type=str, default="heatmaps_avg", help="Output directory for results")
     parser.add_argument("--f0_factor", type=float, default=2.0, help="Factor for f0 adjustment")
     parser.add_argument("--sigma_divisor", type=float, default=20.0, help="Divisor for sigma_f calculation")
     parser.add_argument("--save_interval", type=int, default=100, help="Interval for saving heat maps")
+    parser.add_argument("--n_frames", type=int, default=0, help="Number of frames to generate for animation (0 to skip)")
 
 
     args = parser.parse_args()
@@ -292,13 +383,14 @@ if __name__ == "__main__":
     n_freq = args.n_freq
     N_iter = args.N_iter
     mfp = args.mfp
+    fmax_factor = args.fmax_factor
     disorder_scale = args.disorder_scale
     disorder_onset = args.disorder_onset
     output_dir = args.output_dir
     f0_factor = args.f0_factor
     sigma_divisor = args.sigma_divisor
     save_interval = args.save_interval
-
+    n_frames = args.n_frames
 
     print(f"Run started at {datetime.datetime.now().isoformat()}")
 
@@ -338,7 +430,7 @@ if __name__ == "__main__":
     # -------------------------------
     # Initial Call to determine sizes
     # -------------------------------
-    V_k, V_k_f0, f, f0, sigma_f, v_k, t, ell = TL_AL(N = N_seg, n_freq = n_freq, mfp = mfp, disorder_scale = disorder_scale, disorder_onset = disorder_onset, f0_factor = f0_factor, sigma_divisor = sigma_divisor)
+    V_k, V_k_f0, f, f0, sigma_f, v_k, t, ell = TL_AL(N = N_seg, n_freq = n_freq, mfp = mfp, fmax_factor = fmax_factor, disorder_scale = disorder_scale, disorder_onset = disorder_onset, f0_factor = f0_factor, sigma_divisor = sigma_divisor)
     sorted_keys = sorted(v_k.keys())
     N = len(sorted_keys)
     n_freq = len(next(iter(v_k.values())))
@@ -373,7 +465,7 @@ if __name__ == "__main__":
     for i in tqdm(range(1, N_iter + 1), desc="Simulating", ncols=80):
 
         # --- Run Simulation ---
-        V_k_new, V_k_f0_new, _, _, _, v_k_new, _, _ = TL_AL(N = N_seg, n_freq = n_freq, mfp = mfp, disorder_scale = disorder_scale, disorder_onset = disorder_onset, f0_factor = f0_factor, sigma_divisor = sigma_divisor)
+        V_k_new, V_k_f0_new, _, _, _, v_k_new, _, _ = TL_AL(N = N_seg, n_freq = n_freq, mfp = mfp, fmax_factor = fmax_factor, disorder_scale = disorder_scale, disorder_onset = disorder_onset, f0_factor = f0_factor, sigma_divisor = sigma_divisor)
         
         V_k_f0_new = V_k_f0_new**2
         V_k_f0_avg += (V_k_f0_new - V_k_f0_avg) / i
@@ -497,8 +589,9 @@ if __name__ == "__main__":
             plt.close(fig)
 
     # After the ensemble loop
-    print("Simulation complete. Generating frames...")
-    v_map_accum_ds = v_map_accum[::step, :]
-    generate_energy_frames(v_map_accum_ds, t_ds, V_k_accum, f, f0, sigma_f, f0_factor, mfp, ell,
-                       disorder_scale, frame_dir, time_range=(0, ToF * 1.1), n_frames=501)
-    print("All frames saved to 'frames/' directory.")
+    if n_frames != 0:
+        print("Simulation complete. Generating frames...")
+        v_map_accum_ds = v_map_accum[::step, :]
+        generate_energy_frames(v_map_accum_ds, t_ds, V_k_accum, f, f0, sigma_f, f0_factor, mfp, ell,
+                       disorder_scale, frame_dir, time_range=(0, ToF * 1.1), n_frames=n_frames)
+        print("All frames saved to 'frames/' directory.")
