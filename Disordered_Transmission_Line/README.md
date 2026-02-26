@@ -1,12 +1,16 @@
 # 1D Transmission Line Simulation of Anderson Localization
 
-This Python simulation models the propagation of an electromagnetic pulse through a one-dimensional transmission line (TL) with spatially disordered impedance and propagation speed. By varying the disorder strength, the simulation explores how multiple scattering and interference lead to Anderson localization.
+This Python simulation models the propagation of an electromagnetic pulse through a one-dimensional transmission line (TL) with spatially disordered impedance and propagation speed. By varying the disorder strength, the simulation demonstrates how multiple scattering and interference suppress energy transport, leading to Anderson localization.
 
-The simulation computes both time-domain and frequency-domain metrics using ensemble averaging over thousands of disordered realizations. Outputs include:
+The model connects directly to experimental transmission-line systems and provides a controllable platform for studying wave localization in both the time and frequency domains.
 
-- Spatially resolved energy density ⟨|v_k(t)|²⟩ over time
-- Spectral energy maps |V_k(f)|² vs frequency
+The simulation computes time-domain and frequency-domain metrics using ensemble averaging over many disordered realizations. Outputs include:
+
+- Spatially resolved energy density ⟨|vₖ(t)|²⟩ over time
+- Spectral energy maps |Vₖ(f)|² vs frequency
 - Heatmaps and frame-by-frame evolution of energy transport
+
+These outputs enable direct visualization of ballistic transport, scattering, and localization, making the simulation suitable for both instructional use and research figure generation.
 
 ## Requirements
 
