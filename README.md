@@ -43,7 +43,7 @@ All simulation code and outputs are released under the [MIT License](LICENSE).
 If you use this repository or the results it produces, please cite:
 
 ```
-@misc{AndersonSims2025,
+@misc{AndersonSims2026,
   author = {Jake S. Bobowski},
   title = {Anderson Localization Simulations},
   year = {2026},
