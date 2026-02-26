@@ -1,14 +1,16 @@
 # Anderson Localization Simulations
 
-This repository contains two complementary simulations that explore Anderson localization, or the suppression of wave diffusion in disordered systems due to interference.
+This repository contains two complementary simulations that explore Anderson localization — the suppression of transport in disordered systems due to interference and spatial disorder.
 
-The goal is to provide visual and quantitative tools for understanding localization in both classical and wave-based transport systems. These simulations are suitable for research, teaching, or generating high-quality figures and animations for publication.
+The goal is to provide visual and quantitative tools for understanding localization in both classical and wave-based transport. These simulations are suitable for research, teaching, and generating publication-quality figures and animations.
+
+Together, the simulations illustrate localization from complementary perspectives: particle diffusion highlights suppressed transport statistically, while the transmission-line model demonstrates wave interference and energy confinement.
 
 ## Simulations
 
 ### 🔹 [`Point_Particle_Diffusion/`](Point_Particle_Diffusion)
 
-A classical particle diffusion simulation with spatially disordered drift and diffusion fields. Tracks clustering, nearest neighbor statistics, and divergence-density correlations.
+A classical particle diffusion simulation with spatially disordered drift and diffusion fields. The model exhibits clustering and suppressed transport analogous to Anderson localization.
 
 Includes:
 - Particle motion visualizations
@@ -21,7 +23,7 @@ Includes:
 
 ### 🔹 [`Disordered_Transmission_Line/`](Disordered_Transmission_Line)
 
-A wave-based model simulating electromagnetic pulse propagation through a 1D disordered transmission line. Uses transfer matrices and ensemble averaging to reveal localization in both time and frequency domains.
+A wave-based model simulating electromagnetic pulse propagation through a 1D disordered transmission line. Using transfer matrices and ensemble averaging, the simulation reveals Anderson localization in both time and frequency domains and connects directly to experimental transmission-line systems.
 
 Includes:
 - Temporal energy maps ⟨|vₖ(t)|²⟩
@@ -44,11 +46,11 @@ If you use this repository or the results it produces, please cite:
 @misc{AndersonSims2025,
   author = {Jake S. Bobowski},
   title = {Anderson Localization Simulations},
-  year = {2025},
+  year = {2026},
   howpublished = {\url{https://github.com/jake-bobowski/Anderson_Localization_Simulations}},
 }
 ```
 
 ---
 
-© 2025 Jake Bobowski — University of British Columbia
+© 2026 Jake Bobowski — University of British Columbia
