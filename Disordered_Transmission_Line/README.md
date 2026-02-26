@@ -31,19 +31,50 @@ pip install -r requirements.txt
 
 Run the simulation using:
 
-### CLASSROOM PEDAGOGY (~2.6 GB peak RAM)
+**CLASSROOM PEDAGOGY (~2.6 GB peak RAM)**
 
-Homogeneous TL (~10 s)
+Homogeneous TL (~10 seconds)
 ```bash
 python TL_AL_GitHub.py --n_freq 32768 --N_segments 250 --N_iter 1 --disorder_scale 0 --fmax_factor 2
 ```
 
-Disordered TL (~10 s)
+Disordered TL (~10 minutes)
 ```bash
-python TL_AL_GitHub.py --n_freq 32768 --N_segments 250 --N_iter 50 --disorder_scale 0.4 --fmax_factor 2
+python TL_AL_GitHub.py --n_freq 32768 --N_segments 250 --N_iter 50 --disorder_scale 0.5 --fmax_factor 2
 ```
 
 These will simulate 250-segment homoegeneous/disordered transmission lines.
+
+**RESEARCH SCALE**
+
+Homogeneous TL (high resolution)
+```bash
+python TL_AL_GitHub.py --n_freq 262144 --N_segments 500 --N_iter 1 --disorder_scale 0 --fmax_factor 10
+```
+
+Disordered TL (high resolution)
+```bash
+python TL_AL_GitHub.py --n_freq 262144 --N_segments 500 --N_iter 500 --disorder_scale 0.5 --fmax_factor 10
+```
+
+These will simulate 500-segment homoegeneous/disordered transmission lines over a broader range of frequencies with increased ensemble averaging in the disordered case.
+
+
+**PUBLICATION SCALE (arXiv:2601.01381)**
+
+Homogeneous TL (publication resolution)
+```bash
+python TL_AL_GitHub.py --n_freq 1048576 --N_segments 500 --N_iter 1 --disorder_scale 0 --fmax_factor 10
+```
+
+Disordered TL (publication resolution)
+```bash
+python TL_AL_GitHub.py --n_freq 1048576 --N_segments 500 --N_iter 500 --disorder_scale 0.5 --fmax_factor 10
+```
+
+Simulations that will match the resolution of the simulated data shown in published figures.
+
+
 
 ### Optional Command-Line Arguments
 
