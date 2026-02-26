@@ -15,7 +15,7 @@ A classical particle diffusion simulation with spatially disordered drift and di
 Includes:
 - Particle motion visualizations
 - ⟨r²⟩ vs time
-- Anderson localization metrics
+- Localization metrics
 
 ➡️ See [`Point_Particle_Diffusion/README.md`](Point_Particle_Diffusion/README.md) for usage and outputs.
 
