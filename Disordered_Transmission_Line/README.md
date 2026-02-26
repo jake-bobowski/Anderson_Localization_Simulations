@@ -31,7 +31,7 @@ pip install -r requirements.txt
 
 Run the simulation using:
 
-**CLASSROOM PEDAGOGY (~2.6 GB peak RAM)**
+- **CLASSROOM PEDAGOGY (~2.6 GB peak RAM)**
 
 Homogeneous TL (~10 seconds)
 ```bash
@@ -45,7 +45,7 @@ python TL_AL_GitHub.py --n_freq 32768 --N_segments 250 --N_iter 50 --disorder_sc
 
 These will simulate 250-segment homoegeneous/disordered transmission lines.
 
-**RESEARCH SCALE**
+- **RESEARCH SCALE**
 
 Homogeneous TL (high resolution)
 ```bash
@@ -59,8 +59,7 @@ python TL_AL_GitHub.py --n_freq 262144 --N_segments 500 --N_iter 500 --disorder_
 
 These will simulate 500-segment homoegeneous/disordered transmission lines over a broader range of frequencies with increased ensemble averaging in the disordered case.
 
-
-**PUBLICATION SCALE (arXiv:2601.01381)**
+- **PUBLICATION SCALE ([arXiv:2601.01381](https://arxiv.org/abs/2601.01381))**
 
 Homogeneous TL (publication resolution)
 ```bash
