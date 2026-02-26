@@ -43,7 +43,7 @@ Disordered TL (~10 minutes)
 python TL_AL_GitHub.py --n_freq 32768 --N_segments 250 --N_iter 50 --disorder_scale 0.5 --fmax_factor 2
 ```
 
-These will simulate 250-segment homoegeneous/disordered transmission lines.
+These will simulate 250-segment homogeneous/disordered transmission lines.
 
 - **RESEARCH SCALE**
 
@@ -57,7 +57,7 @@ Disordered TL (high resolution)
 python TL_AL_GitHub.py --n_freq 262144 --N_segments 500 --N_iter 500 --disorder_scale 0.5 --fmax_factor 10
 ```
 
-These will simulate 500-segment homoegeneous/disordered transmission lines over a broader range of frequencies with increased ensemble averaging in the disordered case.
+These will simulate 500-segment homogeneous/disordered transmission lines over a broader range of frequencies with increased ensemble averaging in the disordered case.
 
 - **PUBLICATION SCALE ([arXiv:2601.01381](https://arxiv.org/abs/2601.01381))**
 
@@ -71,7 +71,7 @@ Disordered TL (publication resolution)
 python TL_AL_GitHub.py --n_freq 1048576 --N_segments 500 --N_iter 500 --disorder_scale 0.5 --fmax_factor 10
 ```
 
-Simulations that will match the resolution of the simulated data shown in published figures.  High memory usage and long runtimes.
+These settings reproduce the resolution of the simulated data shown in published figures. Expect high memory usage and long runtimes.
 
 
 
@@ -83,7 +83,7 @@ Simulations that will match the resolution of the simulated data shown in publis
 | `--n_freq`         | 1048576  | Number of frequency points (must be a power of 2)             |
 | `--N_iter`         | 5000     | Number of ensemble iterations                                 |
 | `--mfp`            | 0.15     | Mean free path (m), sets disorder correlation length          |
-| `--fmax_factor`    | 10     | Factor for fmax adjustment          |
+| `--fmax_factor`    | 10     | Multiplier setting maximum simulated frequency range          |
 | `--disorder_scale` | 0.5      | Standard deviation of C, L disorder (relative to mean)        |
 | `--disorder_onset` | 0.2      | Fraction of TL length over which disorder gradually turns on  |
 | `--f0_factor`      | 2.0      | f₀ = f0_factor × v₀ / mfp; center freq. of input Gaussian pulse |
@@ -113,14 +113,14 @@ Simulation results are saved in the directory specified by `--output_dir` (defau
 - `frames/`: 
   - `frame_###_tXXXns.png`: Animation frames showing ⟨|v_k(t)|²⟩ and |V_k(f)|²
   - `*_time.txt` and `*_freq.txt`: Raw data for each frame
-  - If ```n_frames = 0```, the `frames/` directory will be empty 
+  - If `n_frames = 0`, the `frames/` directory will be empty 
 
 ## Citation
 
 If you use this simulation or results derived from it, please cite:
 
 ```
-@misc{TL_AL_2025,
+@misc{TL_AL_2026,
   author = {Jake S. Bobowski},
   title = {1D transmission line simulation of Anderson localization},
   year = {2026},
