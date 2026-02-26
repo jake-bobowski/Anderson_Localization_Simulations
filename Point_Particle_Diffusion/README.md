@@ -60,14 +60,14 @@ Simulation results are saved in a directory named `results_paper/`:
 If you use this simulation or results derived from it, please cite:
 
 ```
-@misc{clustering2025,
+@misc{clustering2026,
   author = {Jake S. Bobowski},
   title = {Particle clustering with spatially disordered drift fields},
-  year = {2025},
+  year = {2026},
   howpublished = {\url{https://github.com/jake-bobowski/Anderson_Localization_Simulations}},
 }
 ```
 
 ---
 
-© 2025 Jake Bobowski. Released under the MIT License.
+© 2026 Jake Bobowski. Released under the MIT License.
