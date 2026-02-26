@@ -113,7 +113,7 @@ Simulation results are saved in the directory specified by `--output_dir` (defau
 - `frames/`: 
   - `frame_###_tXXXns.png`: Animation frames showing ⟨|v_k(t)|²⟩ and |V_k(f)|²
   - `*_time.txt` and `*_freq.txt`: Raw data for each frame
-  - If `n_frames = 0`, the `frames/` directory will no be created
+  - If `n_frames = 0`, the `frames/` directory will not be created
 
 ## Citation
 
