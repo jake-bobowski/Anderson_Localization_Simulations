@@ -1,7 +1,7 @@
 # Jake S. Bobowski
 # University of British Columbia
 # Physics Department
-# August 29, 2025
+# February 26, 2026
 # Point Particle Diffusion/Anderson Localization Simulation
 
 def simulate_clustering(N = 10_000, num_steps = 1000, mu_std = 0.01, total_std = 0.02, M = 50):
