@@ -178,9 +178,17 @@ def simulate_clustering(N = 10_000, num_steps = 1000, mu_std = 0.01, total_std =
             ax.set_yticklabels(tick_labels)
             ax.imshow(delta, origin = 'lower', cmap = 'bwr',  norm = norm,
               extent = (-0.5, 0.5, -0.5, 0.5), interpolation = 'none', alpha = 0.5)
-            ax.scatter(x_initial, y_initial, s = 2, color = 'cyan', label = 'Initial Positions') # Plot the initial positions of the particles.
             ax.scatter(x, y, s = 0.5, color = 'orange', label = 'Dynamic Positions') # Dynamically plot the new positions. 
-            ax.legend(loc='upper left')
+            ax.scatter(x_initial, y_initial, s = 2, color = 'cyan', label = 'Initial Positions') # Plot the initial positions of the particles.
+            
+            handles, labels = ax.get_legend_handles_labels()
+
+            order = [labels.index('Initial Positions'),
+            labels.index('Dynamic Positions')]
+
+            ax.legend([handles[i] for i in order],
+            [labels[i] for i in order],
+            loc='upper left')
         
             # Determine the particle count has a function of the height h.
             count, _ = np.histogram(y, bins=bin_edges)
@@ -337,7 +345,7 @@ if __name__ == "__main__":
 
     # Optional code for saving the individual components of the main figure
     # in a vector graphics format
-    #     #for name, axis in zip(["ax", "ax1", "ax2"], [ax, ax1, ax2]):
+    #for name, axis in zip(["ax", "ax1", "ax2"], [ax, ax1, ax2]):
     #    extent = axis.get_tightbbox(fig_main.canvas.get_renderer())
         # Save each axis as its own vector graphic
     #    fig_main.savefig(f"{prefix}_{name}.pdf", bbox_inches=extent.transformed(fig_main.dpi_scale_trans.inverted()))
